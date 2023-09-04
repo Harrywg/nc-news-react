@@ -16,10 +16,18 @@ export function getArticleById(id) {
     });
 }
 
-export function getUserByUsername({ username }) {
+export function getUserByUsername(username) {
   return fetch(baseUrl + "/users/" + username)
     .then((res) => res.json())
     .then(({ users }) => {
       return users[0];
+    });
+}
+
+export function getArticleCommentsById(id) {
+  return fetch(baseUrl + "/articles/" + id + "/comments")
+    .then((res) => res.json())
+    .then(({ comments }) => {
+      return comments;
     });
 }

@@ -23,6 +23,10 @@
   overflow: hidden;
   position: relative;
   background: rgba(0, 0, 0, 0.432);
+  height: 12rem;
+}
+.article-card:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .article-card_background-el {
@@ -45,7 +49,7 @@
 }
 
 .article-card:hover .article-card_background-el {
-  filter: blur(100px);
+  filter: blur(20px);
 }
 
 .article-card_img-wrap {
@@ -61,6 +65,9 @@
 
 .article-card_header-wrap h3 {
   max-width: 25rem;
+  max-height: 2lh;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .article-card_votes-wrap {
@@ -72,6 +79,11 @@
   font-size: 1.5rem;
 }
 
+.article-card_votes-wrap img {
+  padding: 0.4rem 0;
+  margin: 0 -0.3rem;
+}
+
 .article-card_topic {
   font-size: 0.75rem;
   display: block;
@@ -79,7 +91,7 @@
   margin: 0;
 }
 
-.article-card_img-wrap img {
+.article-card_img {
   /* height: 100%; */
   width: 20rem;
   object-fit: cover;

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 html {
   overflow-y: scroll;
 }
@@ -7,7 +9,7 @@ html {
   --text1: rgb(255, 255, 255);
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: 0;
   background: var(--accent);
   color: white;
@@ -71,4 +73,21 @@ a:visited {
   background: white;
   border-radius: 50%;
   border: 0.1em solid black;
+}
+
+.icon {
+  width: 0.8em;
+  filter: invert(1);
+}
+
+button {
+  padding: 0.75rem 1rem;
+  background: none;
+  border: 0.1em solid white;
+  border-radius: 1em;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
 }

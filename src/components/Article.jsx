@@ -5,7 +5,7 @@ export default function Article({ articleData }) {
   return (
     <article>
       <div className="article_user-profile">
-        <ProfilePicture username={author} />
+        {author ? <ProfilePicture author={author} /> : <></>}
         <span>{author}</span>
       </div>
       <h3>{title}</h3>
