@@ -4,3 +4,7 @@
   gap: 0.5rem;
   font-size: 1rem;
 }
+
+.article_img {
+  border-radius: 1rem;
+}

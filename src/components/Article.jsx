@@ -9,6 +9,7 @@ export default function Article({ articleData }) {
         <span>{author}</span>
       </div>
       <h3>{title}</h3>
+      <img className="article_img" src={article_img_url} />
       <p>{body}</p>
     </article>
   );
