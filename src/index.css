@@ -2,7 +2,7 @@ html {
   overflow-y: scroll;
 }
 :root {
-  --main: rgb(63, 63, 63);
+  --main: rgb(32, 32, 32);
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -16,6 +16,7 @@ header {
   color: white;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 h1 {
   margin: 0;
@@ -52,6 +53,7 @@ a:visited {
   background: white;
   color: black;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .user-avatar {

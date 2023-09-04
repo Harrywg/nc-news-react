@@ -19,9 +19,21 @@
 .article-card {
   display: flex;
   justify-content: space-between;
-  background: var(--main);
   border-radius: 1rem;
   overflow: hidden;
+  position: relative;
+  background: rgba(0, 0, 0, 0.507);
+  background-blend-mode: darken;
+}
+
+.article-card_background-el {
+  height: 100%;
+  width: 100%;
+  background: red;
+  position: absolute;
+  top: 0;
+  z-index: -10;
+  filter: blur(50px);
 }
 
 .article-card:hover {
@@ -33,7 +45,6 @@
 }
 
 .article-card:hover {
-  background: rgb(105, 105, 105);
 }
 
 .article-card_img-wrap {

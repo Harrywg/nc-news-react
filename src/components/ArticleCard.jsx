@@ -20,6 +20,10 @@ export default function ArticleCard(props) {
       }}
       className="article-card"
     >
+      <div
+        className="article-card_background-el"
+        style={{ backgroundImage: `url(${article_img_url})` }}
+      ></div>
       <div className="article-card_text-wrap">
         <p>
           <ProfilePicture username={author} />
