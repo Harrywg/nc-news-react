@@ -10,15 +10,30 @@
 }
 .article-card_text-wrap p {
   font-size: 0.8rem;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
   margin: 0;
 }
 
 .article-card {
   display: flex;
   justify-content: space-between;
-  background: grey;
+  background: var(--main);
   border-radius: 1rem;
   overflow: hidden;
+}
+
+.article-card:hover {
+  cursor: pointer;
+}
+
+.article-card:hover h3 {
+  text-decoration: underline;
+}
+
+.article-card:hover {
+  background: rgb(105, 105, 105);
 }
 
 .article-card_img-wrap {
@@ -53,7 +68,7 @@
 }
 
 .article-card_img-wrap img {
-  height: 10rem;
+  /* height: 100%; */
   width: 20rem;
   object-fit: cover;
 }
