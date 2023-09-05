@@ -35,12 +35,26 @@ h1 {
   justify-content: center;
   position: relative;
 }
+#menu-wrap {
+  background: var(--main);
+  margin-top: 6rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  height: fit-content;
+  position: sticky;
+  top: 5.75rem;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
 
-#menu-wrap .menu-link {
+.menu-link {
   padding: 1rem;
   text-align: center;
   min-width: 5rem;
   border-radius: 0.6rem;
+  transition: 0.1s background-color;
 }
 
 #menu-wrap footer {
@@ -61,37 +75,34 @@ h1 {
   text-align: center;
 }
 
-#menu-wrap .menu-link:hover {
+.menu-link:hover {
   background: rgb(82, 82, 82);
+  text-decoration: underline;
 }
 
 #create-post-link {
   grid-column: 1/-1;
-  background: var(--accent);
+  background: rgb(122, 176, 194);
+  color: black;
 }
 
-#menu-wrap {
-  background: var(--main);
-  margin-top: 4rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  height: fit-content;
-  position: sticky;
-  top: 5.75rem;
-  z-index: 100;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+#create-post-link:hover #create-post-link:before {
+  text-decoration: none;
+}
+
+#create-post-link:hover {
+  background: rgb(144, 222, 248);
 }
 
 main {
   width: 60rem;
   overflow-x: hidden;
+  padding-bottom: 2rem;
 }
 
 h2 {
   max-width: 100%;
-  margin-block: 1rem;
+  margin-block: 2rem;
   height: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -101,6 +112,10 @@ h2 {
 
 h2 a:hover {
   text-decoration: underline;
+}
+
+h2 span {
+  text-transform: capitalize;
 }
 
 a:link {

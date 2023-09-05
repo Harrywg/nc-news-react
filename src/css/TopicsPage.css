@@ -1,0 +1,26 @@
+#topics-wrap {
+  display: flex;
+  gap: 1rem;
+}
+
+.topic {
+  padding: 1rem;
+  background: var(--main);
+  border-radius: 1rem;
+  width: fit-content;
+  transition: background-color 0.1s;
+}
+
+.topic:hover {
+  background: rgb(82, 82, 82);
+}
+.topic:hover h3 {
+  text-decoration: underline;
+}
+.topic * {
+  margin: 0;
+}
+
+.topic h3 {
+  text-transform: capitalize;
+}
