@@ -113,3 +113,19 @@ button:hover {
   cursor: pointer;
   filter: drop-shadow(0 0 1px white);
 }
+
+.error-msg {
+  color: red;
+  font-size: 0.8em;
+  position: absolute;
+  bottom: -2.75em;
+}
+
+:has(.error-msg) {
+  position: relative;
+}
+
+.error-msg::before {
+  content: "*";
+  display: inline;
+}
