@@ -75,10 +75,15 @@ export default function ArticlePage() {
           />
         </footer>
       </article>
-      <CreateCommentForm article_id={article_id} />
+      <CreateCommentForm article_id={article_id} setComments={setComments} />
       <section id="comments-wrap">
         {comments.map((comment) => {
-          return <Comment commentData={comment} key={comment.comment_id} />;
+          return (
+            <Comment
+              commentData={comment}
+              key={comment.comment_id || comment.body}
+            />
+          );
         })}
       </section>
     </main>

@@ -38,7 +38,11 @@ export function updateArticleVotes(id, inc_votes) {
 }
 
 export function postCommentByArticleId(id, body) {
-  return api.post("/articles/" + id + "/comments", body).then(({ data }) => {
-    console.log(data);
+  return api.post("/articles/" + id + "/comments", body);
+}
+
+export function getUserData(username) {
+  return api.get("/users/" + username).then(({ data }) => {
+    return data.user;
   });
 }
