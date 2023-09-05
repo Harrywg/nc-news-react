@@ -30,3 +30,9 @@ export function getArticleCommentsById(id) {
     return data.comments;
   });
 }
+
+export function postCommentByArticleId(id, body) {
+  return api.post("/articles/" + id + "/comments", body).then(({ data }) => {
+    console.log(data);
+  });
+}
