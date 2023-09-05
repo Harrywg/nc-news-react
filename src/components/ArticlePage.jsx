@@ -52,12 +52,12 @@ export default function ArticlePage() {
         <Link to={`/articles/${article_id}`}>{articleData.title || "..."}</Link>
       </h2>
       <article>
+        <img className="article_img" src={article_img_url} />
         <div className="article_user-profile">
           {author ? <ProfilePicture author={author} /> : <></>}
           <span>{author}</span>
         </div>
         <h3>{title}</h3>
-        <img className="article_img" src={article_img_url} />
         <p>{body}</p>
         <footer className="article_user-interaction">
           <LikeButton

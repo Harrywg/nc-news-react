@@ -3,6 +3,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .article_user-interaction {
@@ -32,12 +33,14 @@
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
+  flex-flow: row wrap;
 }
 
 .comment-form textarea {
-  width: calc(100% - 2rem);
+  margin-inline: 2px;
   font-family: inherit;
   resize: none;
+  width: 100%;
   height: 2lh;
   background: none;
   border: 1px solid white;
