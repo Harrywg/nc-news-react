@@ -23,12 +23,10 @@ export default function CreateComment({ article_id, setComments }) {
         postCommentByArticleId(article_id, reqBody).catch(() => {
           setIsError(true);
           setComments((currentComments) => {
-            const newComs = currentComments.filter((comment) => {
+            return currentComments.filter((comment) => {
               if (!comment.localRef) return true;
               return !comment.localRef === localRef;
             });
-            console.log(newComs);
-            return newComs;
           });
         });
       }}

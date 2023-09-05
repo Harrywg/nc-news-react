@@ -50,6 +50,8 @@
   overflow: auto;
 }
 .comment-form div {
+  margin-inline: 2px;
+
   display: flex;
   gap: 1rem;
   width: 100%;
