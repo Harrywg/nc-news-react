@@ -26,7 +26,7 @@
   height: 12rem;
 }
 .article-card:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .article-card_background-el {
@@ -49,7 +49,7 @@
 }
 
 .article-card:hover .article-card_background-el {
-  filter: blur(20px);
+  filter: blur(35px);
 }
 
 .article-card_img-wrap {
