@@ -4,7 +4,7 @@ const baseURL = "https://nc-news-server-duxo.onrender.com/api";
 
 const api = axios.create({
   baseURL,
-  timeout: 1000,
+  timeout: 3000,
 });
 
 export function getArticles() {
@@ -29,6 +29,12 @@ export function getArticleCommentsById(id) {
   return api.get("/articles/" + id + "/comments").then(({ data }) => {
     return data.comments;
   });
+}
+
+export function updateArticleVotes(id, inc_votes) {
+  return api
+    .patch("/articles/" + id, { inc_votes })
+    .then(({ data }) => console.log(data));
 }
 
 export function postCommentByArticleId(id, body) {

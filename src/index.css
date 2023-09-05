@@ -80,12 +80,33 @@ a:visited {
   filter: invert(1);
 }
 
+.interact-button {
+  padding: 0.3em;
+  height: 2.8em;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.dislike {
+  transform: rotate(180deg);
+}
+
+.user-selected {
+  color: #219bff;
+  border-color: #219bff;
+}
+
+.user-selected .icon {
+  filter: invert(54%) sepia(53%) saturate(6262%) hue-rotate(195deg)
+    brightness(113%) contrast(101%);
+}
 button {
   padding: 0.75rem 1rem;
   background: none;
   border: 0.1em solid white;
   border-radius: 1em;
   color: white;
+  user-select: none;
 }
 
 button:hover {
