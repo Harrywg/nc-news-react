@@ -1,33 +1,32 @@
-const baseUrl = "https://nc-news-server-duxo.onrender.com/api";
+import axios from "axios";
+
+const baseURL = "https://nc-news-server-duxo.onrender.com/api";
+
+const api = axios.create({
+  baseURL,
+  timeout: 1000,
+});
 
 export function getArticles() {
-  return fetch(baseUrl + "/articles")
-    .then((res) => res.json())
-    .then(({ articles }) => {
-      return articles;
-    });
+  return api.get("/articles").then(({ data }) => {
+    return data.articles;
+  });
 }
 
 export function getArticleById(id) {
-  return fetch(baseUrl + "/articles/" + id)
-    .then((res) => res.json())
-    .then(({ article }) => {
-      return article[0];
-    });
+  return api.get("/articles/" + id).then(({ data }) => {
+    return data.article[0];
+  });
 }
 
 export function getUserByUsername(username) {
-  return fetch(baseUrl + "/users/" + username)
-    .then((res) => res.json())
-    .then(({ users }) => {
-      return users[0];
-    });
+  return api.get("/users/" + username).then(({ data }) => {
+    return data.users[0];
+  });
 }
 
 export function getArticleCommentsById(id) {
-  return fetch(baseUrl + "/articles/" + id + "/comments")
-    .then((res) => res.json())
-    .then(({ comments }) => {
-      return comments;
-    });
+  return api.get("/articles/" + id + "/comments").then(({ data }) => {
+    return data.comments;
+  });
 }
