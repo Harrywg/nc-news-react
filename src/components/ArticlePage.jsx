@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getArticleById, getArticleCommentsById } from "../api";
+import { UserContext } from "../contexts/User";
 import ProfilePicture from "./common/ProfilePicture";
 import LikeButton from "./common/LikeButton";
 import Comment from "./Comment";
@@ -14,6 +15,9 @@ export default function ArticlePage() {
   const params = useParams();
   const article_id = params.article_id;
   const paramTopic = params.topic;
+
+  const context = useContext(UserContext);
+  const loggedUsername = context.username;
 
   const [articleData, setArticleData] = useState({});
   const { title, topic, author, body, votes, article_img_url } = articleData;
@@ -70,7 +74,9 @@ export default function ArticlePage() {
         <img className="article_img" src={article_img_url} />
         <div className="article_user-profile">
           {author ? <ProfilePicture author={author} /> : <></>}
-          <span>{author}</span>
+          <span className={author === loggedUsername ? "this-user" : ""}>
+            {author}
+          </span>
         </div>
         <h3>{title}</h3>
         <p>{body}</p>

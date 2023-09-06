@@ -231,3 +231,17 @@ button:hover {
   font-size: 0.8rem;
   margin-block: 0.22rem;
 }
+
+.delete-button {
+  border: none;
+  padding: 0.3rem;
+}
+
+.delete-button:hover {
+  color: red;
+  filter: none;
+}
+
+.this-user {
+  color: #219bff;
+}
