@@ -14,7 +14,13 @@ export default function HomePage() {
       <h2>Home</h2>
       <section id="article-card-wrap">
         {articles.map((article) => {
-          return <ArticleCard article={article} key={article.article_id} />;
+          return (
+            <ArticleCard
+              path={"/articles/"}
+              article={article}
+              key={article.article_id}
+            />
+          );
         })}
       </section>
     </main>

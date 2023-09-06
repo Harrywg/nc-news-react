@@ -34,6 +34,7 @@ h1 {
   gap: 1rem;
   justify-content: center;
   position: relative;
+  padding-inline: 1rem;
 }
 #menu-wrap {
   background: var(--main);
@@ -198,4 +199,8 @@ button:hover {
 .error-msg::before {
   content: "*";
   display: inline;
+}
+
+.path-seperator {
+  margin-inline: 0.5rem;
 }

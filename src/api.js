@@ -52,3 +52,9 @@ export function getTopics() {
     return data.topics;
   });
 }
+
+export function getArticlesByTopic(topic) {
+  return api.get("/articles?topic=" + topic).then(({ data }) => {
+    return data.articles;
+  });
+}

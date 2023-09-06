@@ -11,7 +11,10 @@ import commentImg from "../assets/chat.png";
 import { updateArticleVotes } from "../api";
 
 export default function ArticlePage() {
-  const { article_id } = useParams();
+  const params = useParams();
+  const article_id = params.article_id;
+  const paramTopic = params.topic;
+
   const [articleData, setArticleData] = useState({});
   const { title, topic, author, body, votes, article_img_url } = articleData;
 
@@ -32,25 +35,33 @@ export default function ArticlePage() {
     setArticleVotes((votes) => votes + amount);
   };
 
-  if (!articleData.article_id) {
-    return (
-      <main>
-        <h2>
-          <Link to={"/"}>Home</Link> ►
-          <Link to={`/articles/${article_id}`}>
+  const path = (
+    <h2>
+      <Link to={"/"}>{paramTopic ? "Topics" : "Home"}</Link>
+      <span className="path-seperator">►</span>
+      {paramTopic ? (
+        <>
+          <Link to={`/topics/${paramTopic}`}>
+            <span>{paramTopic}</span>
+          </Link>
+          <span className="path-seperator">►</span>
+          <Link to={`/topics/${paramTopic}/${article_id}`}>
             {articleData.title || "..."}
           </Link>
-        </h2>
-      </main>
-    );
+        </>
+      ) : (
+        <Link to={`/articles/${article_id}`}>{articleData.title || "..."}</Link>
+      )}
+    </h2>
+  );
+
+  if (!articleData.article_id) {
+    return <main>{path}</main>;
   }
 
   return (
     <main>
-      <h2>
-        <Link to={"/"}>Home</Link> ►
-        <Link to={`/articles/${article_id}`}>{articleData.title || "..."}</Link>
-      </h2>
+      {path}
       <article>
         <img className="article_img" src={article_img_url} />
         <div className="article_user-profile">

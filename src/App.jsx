@@ -16,6 +16,7 @@ function App() {
           <Route path="/articles/:article_id" element={<ArticlePage />} />
           <Route path="/topics" element={<TopicsPage />} />
           <Route path="/topics/:topic" element={<TopicPage />} />
+          <Route path="/topics/:topic/:article_id" element={<ArticlePage />} />
         </Routes>
         <div id="menu-wrap">
           <Link

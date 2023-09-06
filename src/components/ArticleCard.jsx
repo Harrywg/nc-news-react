@@ -16,8 +16,10 @@ export default function ArticleCard(props) {
     comment_count,
   } = props.article;
 
+  const { path } = props;
+
   return (
-    <Link to={`/articles/${article_id}`} className="article-card">
+    <Link to={`${path}${article_id}`} className="article-card">
       <div
         className="article-card_background-el"
         style={{ backgroundImage: `url(${article_img_url})` }}
