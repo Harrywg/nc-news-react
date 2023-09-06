@@ -204,3 +204,30 @@ button:hover {
 .path-seperator {
   margin-inline: 0.5rem;
 }
+
+.title-sort-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort-queries {
+  display: flex;
+  align-items: flex-end;
+  margin-block: 2rem;
+  height: 2rem;
+  gap: 1rem;
+  padding-inline: 1px;
+}
+
+.sort-queries select {
+  padding: 0.1rem;
+  background: rgb(168, 168, 168);
+  color: var(--main);
+  font-family: inherit;
+  font-size: 0.8rem;
+}
+
+.sort-queries > p {
+  font-size: 0.8rem;
+  margin-block: 0.22rem;
+}

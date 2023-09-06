@@ -37,7 +37,11 @@ export default function ArticlePage() {
 
   const path = (
     <h2>
-      <Link to={"/"}>{paramTopic ? "Topics" : "Home"}</Link>
+      {paramTopic ? (
+        <Link to={"/topics"}>Topics</Link>
+      ) : (
+        <Link to={"/"}>Home</Link>
+      )}
       <span className="path-seperator">►</span>
       {paramTopic ? (
         <>

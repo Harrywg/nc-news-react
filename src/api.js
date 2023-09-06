@@ -7,8 +7,8 @@ const api = axios.create({
   timeout: 3000,
 });
 
-export function getArticles() {
-  return api.get("/articles").then(({ data }) => {
+export function getArticles(params) {
+  return api.get("/articles", { params }).then(({ data }) => {
     return data.articles;
   });
 }
@@ -50,11 +50,5 @@ export function getUserData(username) {
 export function getTopics() {
   return api.get("/topics").then(({ data }) => {
     return data.topics;
-  });
-}
-
-export function getArticlesByTopic(topic) {
-  return api.get("/articles?topic=" + topic).then(({ data }) => {
-    return data.articles;
   });
 }
