@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getUserByUsername } from "../api";
+import { UserContext } from "../contexts/User";
+
 import ProfilePicture from "./common/ProfilePicture";
 import likeImg from "../assets/like.png";
 import commentImg from "../assets/chat.png";
@@ -18,6 +20,9 @@ export default function ArticleCard(props) {
 
   const { path } = props;
 
+  const context = useContext(UserContext);
+  const loggedUsername = context.username;
+
   return (
     <Link to={`${path}${article_id}`} className="article-card">
       <div
@@ -25,7 +30,7 @@ export default function ArticleCard(props) {
         style={{ backgroundImage: `url(${article_img_url})` }}
       ></div>
       <div className="article-card_text-wrap">
-        <p>
+        <p className={loggedUsername === author ? "this-user" : ""}>
           <ProfilePicture author={author} />
           {author}
         </p>

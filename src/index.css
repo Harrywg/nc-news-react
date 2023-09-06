@@ -201,6 +201,10 @@ button:hover {
   display: inline;
 }
 
+.comment-error {
+  bottom: -1em;
+}
+
 .path-seperator {
   margin-inline: 0.5rem;
 }

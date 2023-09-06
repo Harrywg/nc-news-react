@@ -101,6 +101,7 @@ export default function ArticlePage() {
         {comments.map((comment) => {
           return (
             <Comment
+              setComments={setComments}
               commentData={comment}
               key={comment.comment_id || comment.body}
             />
