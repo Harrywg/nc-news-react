@@ -11,12 +11,16 @@ export default function ErrorPage({ error }) {
     case 500:
       msg = "Internal Server Error";
       break;
+    case 400:
+      msg = "Bad Request";
+      break;
     default:
       msg = "Something Went Wrong";
   }
   return (
     <main>
       <h2>Error {code}</h2>
+      <p>{window.location.href}</p>
       <p>{msg}</p>
       <Link className="return-link" to={"/"}>
         Return Home
