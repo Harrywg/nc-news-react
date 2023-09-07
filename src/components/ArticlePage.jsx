@@ -39,7 +39,6 @@ export default function ArticlePage() {
   }, []);
 
   const updateVotes = (amount) => {
-    console.log({ amount });
     setArticleVotes((votes) => votes + amount);
   };
 
@@ -110,7 +109,7 @@ export default function ArticlePage() {
         </footer>
       </article>
       {isCommentErr ? (
-        <p className="error-msg">Error loading comments</p>
+        <p className="error-msg comment-error">Error loading comments</p>
       ) : (
         <>
           <CreateCommentForm

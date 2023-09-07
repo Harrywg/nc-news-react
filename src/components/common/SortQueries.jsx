@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function SortQueries({ queryData, setQueryData }) {
   const handleChange = (e) => {
-    console.log(e);
     setQueryData({ ...queryData, [e.target.name]: e.target.value });
   };
 

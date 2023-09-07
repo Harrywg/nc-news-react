@@ -51,14 +51,27 @@ function App() {
               Create Post
             </Link>
             <footer>
-              <a>Footer link</a>
-              <a>Footer link</a>
-              <a>Footer link</a>
-              <a>Footer link</a>
-              <p>
-                NC News, Inc. © 2023.
-                <br /> All rights reserved.
-              </p>
+              <p>This is a demo project by Harry Ward-Gray.</p>
+
+              <a
+                href="https://github.com/Harrywg/nc-news-react"
+                target="_blank"
+              >
+                GitHub
+              </a>
+              <a href="https://github.com/Harrywg/nc-news" target="_blank">
+                Backend
+              </a>
+              <p>You can find me here:</p>
+              <a
+                href="https://www.linkedin.com/in/harry-ward-gray/"
+                target="_blank"
+              >
+                LinkedIn
+              </a>
+              <a href="https://harrywg.dev/" target="_blank">
+                Portfolio
+              </a>
             </footer>
           </div>
         </div>

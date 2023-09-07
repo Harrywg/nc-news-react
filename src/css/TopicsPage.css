@@ -1,5 +1,6 @@
 #topics-wrap {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -9,6 +10,12 @@
   border-radius: 1rem;
   width: fit-content;
   transition: background-color 0.1s;
+}
+
+@media (max-width: 600px) {
+  .topic p {
+    display: none;
+  }
 }
 
 .topic:hover {

@@ -32,9 +32,7 @@ export function getArticleCommentsById(id) {
 }
 
 export function updateArticleVotes(id, inc_votes) {
-  return api
-    .patch("/articles/" + id, { inc_votes })
-    .then(({ data }) => console.log(data));
+  return api.patch("/articles/" + id, { inc_votes });
 }
 
 export function postCommentByArticleId(id, body) {

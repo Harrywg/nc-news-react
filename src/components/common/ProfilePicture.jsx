@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getUserByUsername } from "../../api";
 
-export default function ProfilePicture({ author }) {
+export default function ProfilePicture({ author, id }) {
   const [url, setUrl] = useState("");
   useEffect(() => {
     getUserByUsername(author).then((user) => {
@@ -9,5 +9,5 @@ export default function ProfilePicture({ author }) {
     });
   }, [author]);
 
-  return url ? <img src={url} className="user-avatar" /> : <></>;
+  return url ? <img src={url} id={id} className="user-avatar" /> : <></>;
 }

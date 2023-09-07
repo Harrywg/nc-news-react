@@ -14,7 +14,6 @@ export default function HomePage() {
 
   useEffect(() => {
     getArticles({ sort_by, order }).then((resArticles) => {
-      console.log(resArticles);
       setArticles(resArticles);
     });
   }, [queryData]);
