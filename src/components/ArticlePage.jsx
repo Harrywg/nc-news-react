@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getArticleById, getArticleCommentsById } from "../api";
+import { getArticleById, getArticleCommentsById, deleteArticle } from "../api";
 import { UserContext } from "../contexts/User";
 import ProfilePicture from "./common/ProfilePicture";
 import LikeButton from "./common/LikeButton";
@@ -25,6 +25,8 @@ export default function ArticlePage() {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [isCommentErr, setIsCommentErr] = useState(false);
+
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -65,6 +67,16 @@ export default function ArticlePage() {
       )}
     </h2>
   );
+  if (isDeleted) {
+    return (
+      <main>
+        {path}
+        <div>
+          <p>Article has been deleted.</p>
+        </div>
+      </main>
+    );
+  }
 
   if (error !== null) {
     return (
@@ -107,6 +119,25 @@ export default function ArticlePage() {
             targetId={article_id}
           />
         </footer>
+
+        {loggedUsername === author ? (
+          <>
+            <br />
+            <button
+              onClick={() => {
+                setIsDeleted(true);
+                deleteArticle(article_id).catch(() => {
+                  setIsDeleted(false);
+                });
+              }}
+              className="delete-button"
+            >
+              Delete Article
+            </button>
+          </>
+        ) : (
+          <></>
+        )}
       </article>
       {isCommentErr ? (
         <p className="error-msg comment-error">Error loading comments</p>

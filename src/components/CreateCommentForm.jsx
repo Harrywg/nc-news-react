@@ -11,8 +11,13 @@ export default function CreateComment({ article_id, setComments }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        if (!commentBody.length) {
+          return;
+        }
+        setSelected(false);
         setIsError(false);
         const reqBody = { body: commentBody, username };
+        setCommentBody("");
         const localRef = String(Math.random());
         setComments((currentComments) => {
           return [

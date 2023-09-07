@@ -42,6 +42,10 @@ header a:hover {
   gap: 1rem;
 }
 
+.header_nav > #header-avatar > p {
+  margin: 0;
+}
+
 #header-avatar > #log-out {
   background: var(--accent);
   padding: 0.6rem;
@@ -62,7 +66,6 @@ header a:hover {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-top: 0.6rem;
 }
 
 .header_nav-mobile {
@@ -411,8 +414,10 @@ button:hover {
 }
 
 .sort-queries select {
-  padding: 0.1rem;
+  padding: 0.3rem;
+  margin-bottom: -0.1rem;
   background: rgb(168, 168, 168);
+  border: none;
   color: var(--main);
   font-family: inherit;
   font-size: 0.8rem;

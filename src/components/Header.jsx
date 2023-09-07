@@ -22,7 +22,7 @@ export default function Header() {
             <Link onClick={switchNav} to="/topics">
               Topics
             </Link>
-            <Link onClick={switchNav} to="/">
+            <Link to="/create-post" onClick={switchNav}>
               Create Post
             </Link>
             <div id="header-avatar">

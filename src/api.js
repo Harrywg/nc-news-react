@@ -54,3 +54,11 @@ export function getTopics() {
 export function deleteComment(id) {
   return api.delete("/comments/" + id);
 }
+
+export function postArticle(body) {
+  return api.post("/articles", body);
+}
+
+export function deleteArticle(id) {
+  return api.delete("/articles/" + id);
+}

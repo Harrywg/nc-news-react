@@ -1,0 +1,54 @@
+#create-post-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-inline: 1px;
+}
+#create-post-form input,
+#create-post-form textarea {
+  padding: 0.5rem;
+  background: none;
+  border: 1px solid white;
+  color: white;
+}
+
+#create-post-form > select {
+  padding: 0.5rem;
+  border: 1px solid grey;
+  background: grey;
+  text-transform: capitalize;
+}
+
+#image-url-input {
+  grid-column: 1/-1;
+}
+
+#create-post-form textarea {
+  grid-column: 1/-1;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 20rem;
+}
+
+#create-post-form > button {
+  border-radius: 0;
+  grid-column: 1/-1;
+  font-size: 1.2rem;
+  border: 0;
+  background: grey;
+  color: var(--main);
+}
+
+#create-post-form > button:hover {
+  filter: none;
+  background: rgb(175, 175, 175);
+}
+
+.form-error {
+  color: red;
+  font-size: 0.8em;
+}
+.form-error::before {
+  content: "*";
+  display: inline;
+}

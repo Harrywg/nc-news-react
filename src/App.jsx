@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import ArticlePage from "./components/ArticlePage";
 import TopicsPage from "./components/TopicsPage";
 import TopicPage from "./components/TopicPage";
+import CreatePostPage from "./components/CreatePostPage";
 import ProfilePicture from "./components/common/ProfilePicture";
 import { Routes, Route, Link } from "react-router-dom";
 import Error from "./components/ErrorPage";
@@ -23,6 +24,8 @@ function App() {
           <Route path="/topics" element={<TopicsPage />} />
           <Route path="/topics/:topic" element={<TopicPage />} />
           <Route path="/topics/:topic/:article_id" element={<ArticlePage />} />
+          <Route path="/create-post" element={<CreatePostPage />} />
+
           <Route path="/*" element={<Error error={{ code: 404 }} />} />
         </Routes>
         <div className="sidebar">
@@ -47,7 +50,7 @@ function App() {
             <Link to="/topics" className="menu-link">
               Topics
             </Link>
-            <Link className="menu-link" id="create-post-link">
+            <Link to="/create-post" className="menu-link" id="create-post-link">
               Create Post
             </Link>
             <footer>
