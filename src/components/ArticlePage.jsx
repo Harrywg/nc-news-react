@@ -6,9 +6,8 @@ import ProfilePicture from "./common/ProfilePicture";
 import LikeButton from "./common/LikeButton";
 import Comment from "./Comment";
 import CreateCommentForm from "./CreateCommentForm";
+import Error from "./ErrorPage";
 import "../css/Article.css";
-import likeImg from "../assets/like.png";
-import commentImg from "../assets/chat.png";
 import { updateArticleVotes } from "../api";
 
 export default function ArticlePage() {
@@ -23,15 +22,20 @@ export default function ArticlePage() {
   const { title, topic, author, body, votes, article_img_url } = articleData;
 
   const [articleVotes, setArticleVotes] = useState(0);
-
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
+  const [isCommentErr, setIsCommentErr] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((articleData) => {
-      setArticleData(articleData);
-      setArticleVotes(articleData.votes);
-    });
-    getArticleCommentsById(article_id).then(setComments);
+    getArticleById(article_id)
+      .then((articleData) => {
+        setArticleData(articleData);
+        setArticleVotes(articleData.votes);
+      })
+      .catch(setError);
+    getArticleCommentsById(article_id)
+      .then(setComments)
+      .catch(() => setIsCommentErr(true));
   }, []);
 
   const updateVotes = (amount) => {
@@ -62,6 +66,15 @@ export default function ArticlePage() {
       )}
     </h2>
   );
+
+  if (error !== null) {
+    return (
+      <main>
+        {path}
+        <Error error={error} />
+      </main>
+    );
+  }
 
   if (!articleData.article_id) {
     return <main>{path}</main>;
@@ -96,18 +109,27 @@ export default function ArticlePage() {
           />
         </footer>
       </article>
-      <CreateCommentForm article_id={article_id} setComments={setComments} />
-      <section id="comments-wrap">
-        {comments.map((comment) => {
-          return (
-            <Comment
-              setComments={setComments}
-              commentData={comment}
-              key={comment.comment_id || comment.body}
-            />
-          );
-        })}
-      </section>
+      {isCommentErr ? (
+        <p className="error-msg">Error loading comments</p>
+      ) : (
+        <>
+          <CreateCommentForm
+            article_id={article_id}
+            setComments={setComments}
+          />
+          <section id="comments-wrap">
+            {comments.map((comment) => {
+              return (
+                <Comment
+                  setComments={setComments}
+                  commentData={comment}
+                  key={comment.comment_id || comment.body}
+                />
+              );
+            })}
+          </section>
+        </>
+      )}
     </main>
   );
 }

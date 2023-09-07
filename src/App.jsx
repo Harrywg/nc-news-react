@@ -8,6 +8,7 @@ import TopicsPage from "./components/TopicsPage";
 import TopicPage from "./components/TopicPage";
 import ProfilePicture from "./components/common/ProfilePicture";
 import { Routes, Route, Link } from "react-router-dom";
+import Error from "./components/ErrorPage";
 
 function App() {
   const { username } = useContext(UserContext);
@@ -22,6 +23,7 @@ function App() {
           <Route path="/topics" element={<TopicsPage />} />
           <Route path="/topics/:topic" element={<TopicPage />} />
           <Route path="/topics/:topic/:article_id" element={<ArticlePage />} />
+          <Route path="/*" element={<Error error={{ code: 404 }} />} />
         </Routes>
         <div className="sidebar">
           <div className="user-wrap">

@@ -311,3 +311,17 @@ button:hover {
 .this-user {
   color: #219bff;
 }
+
+.return-link {
+  padding: 1rem;
+  background: var(--main);
+  border-radius: 1rem;
+  margin-block: 1rem;
+  display: block;
+  width: fit-content;
+  transition: background-color 0.1s;
+}
+
+.return-link:hover {
+  background: rgb(82, 82, 82);
+}
