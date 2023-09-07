@@ -46,7 +46,7 @@ export default function Header() {
           <Link onClick={switchNav} to="/topics">
             Topics
           </Link>
-          <Link onClick={switchNav} to="/">
+          <Link onClick={switchNav} to="/create-post">
             Create Post
           </Link>
         </nav>
