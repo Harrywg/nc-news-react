@@ -47,7 +47,7 @@ export default function LikeButton({
     <>
       <button
         onClick={() => {
-          const isClickedModifier = likeState[type] ? 1 : -1;
+          const isClickedModifier = likeState[type] ? -1 : 1;
           if (likeState[otherType]) {
             handleChangeBoth(type, otherType);
           } else handleChange(type, isClickedModifier);
