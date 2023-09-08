@@ -6,6 +6,7 @@
 }
 #create-post-form input,
 #create-post-form textarea {
+  font-size: 1rem;
   padding: 0.5rem;
   background: none;
   border: 1px solid white;
@@ -20,6 +21,8 @@
 }
 
 #create-post-form > select {
+  font-size: 1rem;
+
   padding: 0.5rem;
   border: 1px solid grey;
   background: grey;
@@ -40,7 +43,7 @@
 #create-post-form > button {
   border-radius: 0;
   grid-column: 1/-1;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: 0;
   background: grey;
   color: var(--main);

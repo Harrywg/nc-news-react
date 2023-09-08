@@ -4,14 +4,21 @@ import { getUserByUsername } from "../api";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [username, setUsername] = useState("tickle122");
+  const [username, setUsername] = useState(
+    JSON.parse(localStorage.getItem("username")) || ""
+  );
 
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUserByUsername(username).then((user) => {
-      setUser(user);
-    });
+    if (username) {
+      localStorage.setItem("username", JSON.stringify(username));
+      getUserByUsername(username).then((user) => {
+        setUser(user);
+      });
+    } else {
+      localStorage.setItem("username", null);
+    }
   }, [username]);
 
   return (

@@ -3,10 +3,12 @@ import { UserContext } from "../contexts/User";
 import ProfilePicture from "./common/ProfilePicture";
 import { Link } from "react-router-dom";
 export default function Header() {
-  const { username } = useContext(UserContext);
+  const { username, setUsername } = useContext(UserContext);
   const [isNavHidden, setIsNavHidden] = useState(true);
 
   const switchNav = () => setIsNavHidden((isHidden) => !isHidden);
+
+  if (!username) return;
 
   return (
     <>
@@ -26,7 +28,9 @@ export default function Header() {
               Create Post
             </Link>
             <div id="header-avatar">
-              <Link id="log-out">Log Out</Link>
+              <Link onClick={() => setUsername("")} id="log-out">
+                Log Out
+              </Link>
               <ProfilePicture author={username} />
               <p className="this-user">{username}</p>
             </div>
@@ -51,7 +55,13 @@ export default function Header() {
           </Link>
         </nav>
         <div id="header-avatar">
-          <Link onClick={switchNav} id="log-out">
+          <Link
+            onClick={() => {
+              switchNav();
+              setUsername("");
+            }}
+            id="log-out"
+          >
             Log Out
           </Link>
           <p className="this-user">{username}</p>

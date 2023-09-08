@@ -62,3 +62,7 @@ export function postArticle(body) {
 export function deleteArticle(id) {
   return api.delete("/articles/" + id);
 }
+
+export function getUsers() {
+  return api.get("/users").then(({ data }) => data);
+}
