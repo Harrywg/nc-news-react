@@ -6,25 +6,23 @@ import ProfilePicture from "./common/ProfilePicture";
 export default function Comment(props) {
   const context = useContext(UserContext);
   const loggedUsername = context.username;
-  const { body, author, username, comment_id, isError } = props.commentData;
+  const { body, author, username, comment_id } = props.commentData;
   const { setComments, commentData } = props;
+  const [isError, setIsError] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+
   const handleDelete = (e) => {
-    let prevComments;
-    let thisComment;
-    setComments((currentComments) => {
-      thisComment = currentComments.findIndex((comment) => {
-        return comment.comment_id === comment_id;
-      });
-      prevComments = currentComments;
-      return currentComments.filter((comment) => {
-        return comment.comment_id !== comment_id;
-      });
-    });
+    setIsDeleted(true);
     deleteComment(comment_id).catch(() => {
-      prevComments[thisComment].isError = true;
-      setComments(prevComments);
+      setIsDeleted(false);
+      setIsError(true);
     });
   };
+
+  if (isDeleted) {
+    return <p className="deleted-comment"> This comment has been deleted.</p>;
+  }
+
   return (
     <article className="comment">
       <div className="comment-title">

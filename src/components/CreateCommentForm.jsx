@@ -25,15 +25,27 @@ export default function CreateComment({ article_id, setComments }) {
             ...currentComments,
           ];
         });
-        postCommentByArticleId(article_id, reqBody).catch(() => {
-          setIsError(true);
-          setComments((currentComments) => {
-            return currentComments.filter((comment) => {
-              if (!comment.localRef) return true;
-              return !comment.localRef === localRef;
+        postCommentByArticleId(article_id, reqBody)
+          .then(({ data }) => {
+            const resComment = data.comment;
+            setComments((currentComments) => {
+              return currentComments.map((comment) => {
+                if (comment.localRef === localRef) {
+                  return { ...resComment };
+                }
+                return comment;
+              });
+            });
+          })
+          .catch(() => {
+            setIsError(true);
+            setComments((currentComments) => {
+              return currentComments.filter((comment) => {
+                if (!comment.localRef) return true;
+                return !comment.localRef === localRef;
+              });
             });
           });
-        });
       }}
       className="comment-form"
     >
@@ -42,7 +54,6 @@ export default function CreateComment({ article_id, setComments }) {
         onClick={() => setSelected(true)}
         onChange={(e) => {
           setCommentBody(e.target.value);
-          console.log(commentBody);
         }}
         value={commentBody}
         placeholder="Add Comment"

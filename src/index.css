@@ -455,3 +455,7 @@ button:hover {
 .return-link:hover {
   background: rgb(82, 82, 82);
 }
+
+.deleted-comment {
+  color: grey;
+}
