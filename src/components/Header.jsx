@@ -36,7 +36,15 @@ export default function Header() {
             </div>
           </nav>
         </div>
-        <button onClick={switchNav} id="header_nav-mobile-button"></button>
+        <div id="header_nav-mobile-pic-button-wrap">
+          <ProfilePicture
+            author={username}
+            className={
+              isNavHidden ? "header_nav-mobile-avatar-top" : "hide-avatar"
+            }
+          />
+          <button onClick={switchNav} id="header_nav-mobile-button"></button>
+        </div>
       </header>
       <div
         className={

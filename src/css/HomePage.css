@@ -120,3 +120,41 @@
   width: 20rem;
   object-fit: cover;
 }
+
+.home-mobile-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.home-mobile-links a {
+  background: var(--main);
+  padding: 1rem 4rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.home-mobile-links a:last-child {
+  background: rgb(122, 176, 194);
+  color: black;
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .home-mobile-links a {
+    padding: 1rem 2rem;
+  }
+}
+@media (min-width: 700px) {
+  .home-mobile-links a:last-child {
+    width: auto;
+  }
+  .home-mobile-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-mobile-links {
+    display: none;
+  }
+}

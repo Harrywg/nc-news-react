@@ -89,6 +89,17 @@ header a:hover {
   gap: 1;
 }
 
+.header_nav-mobile-avatar-top {
+  display: none;
+  font-size: 0.8rem;
+}
+
+#header_nav-mobile-pic-button-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .header_nav-mobile #header-avatar div {
   display: flex;
   justify-content: center;
@@ -125,6 +136,10 @@ header a:hover {
     display: flex;
   }
 
+  .header_nav-mobile-avatar-top {
+    display: inline;
+  }
+
   #header_nav-mobile-button {
     display: block;
     border: none;
@@ -136,6 +151,10 @@ header a:hover {
     content: "≡";
     font-size: 2rem;
   }
+}
+
+.hide-avatar {
+  display: none;
 }
 
 .sidebar {

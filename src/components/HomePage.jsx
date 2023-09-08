@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../api";
+import { Link } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
 import SortQueries from "./common/SortQueries";
 import "../css/HomePage.css";
@@ -24,7 +25,12 @@ export default function HomePage() {
         <h2>Home</h2>
         <SortQueries queryData={queryData} setQueryData={setQueryData} />
       </div>
+
       <section id="article-card-wrap">
+        <div className="home-mobile-links">
+          <Link>Topics</Link>
+          <Link>Create Post</Link>
+        </div>
         {articles.map((article) => {
           return (
             <ArticleCard
