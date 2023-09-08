@@ -28,8 +28,8 @@ export default function HomePage() {
 
       <section id="article-card-wrap">
         <div className="home-mobile-links">
-          <Link>Topics</Link>
-          <Link>Create Post</Link>
+          <Link to={"/topics"}>Topics</Link>
+          <Link to={"/create-post"}>Create Post</Link>
         </div>
         {articles.map((article) => {
           return (
