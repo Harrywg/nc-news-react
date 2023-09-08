@@ -19,7 +19,7 @@ export default function HomePage() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          if (isFinished) {
+          if (isFinished || !articles.length) {
             return;
           }
           const params = { sort_by, order, p: p + 1 };

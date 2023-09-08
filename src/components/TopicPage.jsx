@@ -20,7 +20,7 @@ export default function TopicPage() {
       (entries) => {
         <div ref={observerTarget} id="infinite-scroll-el"></div>;
         if (entries[0].isIntersecting) {
-          if (isFinished) {
+          if (isFinished || !articles.length) {
             return;
           }
           const params = { topic, sort_by, order, p: p + 1 };
