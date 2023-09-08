@@ -14,10 +14,6 @@ export default function LikeButton({
   const type = like ? "like" : "dislike";
   const otherType = like ? "dislike" : "like";
 
-  useEffect(() => {
-    console.log(likeState);
-  }, [likeState]);
-
   const handleChange = (type, isClickedModifier) => {
     setIsError(false);
     const likeDislikeModifier = type === "like" ? 1 : -1;

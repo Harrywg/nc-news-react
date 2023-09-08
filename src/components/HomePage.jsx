@@ -22,8 +22,9 @@ export default function HomePage() {
           if (isFinished) {
             return;
           }
+          const params = { sort_by, order, p: p + 1 };
           setP(p + 1);
-          getArticles({ sort_by, order, p }).then((resArticles) => {
+          getArticles(params).then((resArticles) => {
             if (resArticles.length < 10) setIsFinished(true);
             setArticles([...articles, ...resArticles]);
           });

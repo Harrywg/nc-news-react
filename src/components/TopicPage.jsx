@@ -18,12 +18,14 @@ export default function TopicPage() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        <div ref={observerTarget} id="infinite-scroll-el"></div>;
         if (entries[0].isIntersecting) {
           if (isFinished) {
             return;
           }
+          const params = { topic, sort_by, order, p: p + 1 };
           setP(p + 1);
-          getArticles({ topic, sort_by, order, p }).then((resArticles) => {
+          getArticles(params).then((resArticles) => {
             if (resArticles.length < 10) setIsFinished(true);
             setArticles([...articles, ...resArticles]);
           });
