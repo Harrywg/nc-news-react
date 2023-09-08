@@ -33,7 +33,7 @@ export default function LikeButton({
 
   const handleChangeBoth = (type, otherType) => {
     setIsError(false);
-    const amount = type === "like" ? -2 : 2;
+    const amount = type === "like" ? 2 : -2;
     setLikeState({ [type]: true, [otherType]: false });
     updateVotes(amount);
     patchTarget(targetId, amount).catch((err) => {
