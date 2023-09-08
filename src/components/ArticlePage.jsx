@@ -28,6 +28,11 @@ export default function ArticlePage() {
 
   const [isDeleted, setIsDeleted] = useState(false);
 
+  const [likeState, setLikeState] = useState({
+    like: false,
+    dislike: false,
+  });
+
   useEffect(() => {
     getArticleById(article_id)
       .then((articleData) => {
@@ -107,6 +112,8 @@ export default function ArticlePage() {
         <footer className="article_user-interaction">
           <LikeButton
             like={true}
+            likeState={likeState}
+            setLikeState={setLikeState}
             updateVotes={updateVotes}
             patchTarget={updateArticleVotes}
             targetId={article_id}
@@ -114,6 +121,8 @@ export default function ArticlePage() {
           <span className="like-count">{articleVotes}</span>
           <LikeButton
             like={false}
+            likeState={likeState}
+            setLikeState={setLikeState}
             updateVotes={updateVotes}
             patchTarget={updateArticleVotes}
             targetId={article_id}

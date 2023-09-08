@@ -1,47 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import likeImg from "../../assets/like.png";
 
 export default function LikeButton({
   like,
+  likeState,
+  setLikeState,
   updateVotes,
   patchTarget,
   targetId,
 }) {
-  const [isSelected, setIsSelected] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const modifier = like ? 1 : -1;
+  const type = like ? "like" : "dislike";
+  const otherType = like ? "dislike" : "like";
 
-  const handleClick = () => {
-    if (!isSelected) {
-      setIsError(false);
-      const amount = 1 * modifier;
-      setIsSelected(true);
-      updateVotes(amount);
-      patchTarget(targetId, amount).catch((err) => {
-        setIsError(true);
-        setIsSelected(false);
-        updateVotes(amount * -1);
-      });
-    } else {
-      const amount = -1 * modifier;
-      setIsError(false);
-      setIsSelected(false);
-      updateVotes(amount);
-      patchTarget(targetId, amount).catch((err) => {
-        setIsError(true);
-        setIsSelected(true);
-        updateVotes(amount * -1);
-      });
-    }
+  useEffect(() => {
+    console.log(likeState);
+  }, [likeState]);
+
+  const handleChange = (type, isClickedModifier) => {
+    setIsError(false);
+    const likeDislikeModifier = type === "like" ? 1 : -1;
+    const amount = 1 * likeDislikeModifier * isClickedModifier;
+    setLikeState({ ...likeState, [type]: !likeState[type] });
+    updateVotes(amount);
+    patchTarget(targetId, amount).catch((err) => {
+      setLikeState({ ...likeState, [type]: !likeState[type] });
+      setIsError(true);
+      updateVotes(amount * -1);
+    });
+  };
+
+  const handleChangeBoth = (type, otherType) => {
+    setIsError(false);
+    const amount = type === "like" ? -2 : 2;
+    setLikeState({ [type]: true, [otherType]: false });
+    updateVotes(amount);
+    patchTarget(targetId, amount).catch((err) => {
+      setLikeState({ [type]: false, [otherType]: true });
+      setIsError(true);
+      updateVotes(amount * -1);
+    });
   };
 
   return (
     <>
       <button
-        onClick={handleClick}
+        onClick={() => {
+          const isClickedModifier = likeState[type] ? 1 : -1;
+          if (likeState[otherType]) {
+            handleChangeBoth(type, otherType);
+          } else handleChange(type, isClickedModifier);
+        }}
         className={
-          isSelected ? "interact-button user-selected" : "interact-button"
+          likeState[type] ? "interact-button user-selected" : "interact-button"
         }
       >
         <img src={likeImg} className={like ? "icon" : "icon dislike"} />
