@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getArticles } from "../api";
 import { Link } from "react-router-dom";
 import ArticleCard from "./ArticleCard";
@@ -12,6 +12,34 @@ export default function HomePage() {
     order: "DESC",
   });
   const { sort_by, order } = queryData;
+  const observerTarget = useRef(null);
+  const [isFinished, setIsFinished] = useState(false);
+  const [p, setP] = useState(1);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (isFinished) {
+            return;
+          }
+          setP(p + 1);
+          getArticles({ sort_by, order, p }).then((resArticles) => {
+            if (resArticles.length < 10) setIsFinished(true);
+            setArticles([...articles, ...resArticles]);
+          });
+        }
+      },
+      { threshold: 1 }
+    );
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+    return () => {
+      if (observerTarget.current) {
+        observer.unobserve(observerTarget.current);
+      }
+    };
+  }, [articles, queryData]);
 
   useEffect(() => {
     getArticles({ sort_by, order }).then((resArticles) => {
@@ -41,6 +69,7 @@ export default function HomePage() {
           );
         })}
       </section>
+      <div ref={observerTarget} id="infinite-scroll-el"></div>
     </main>
   );
 }

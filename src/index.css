@@ -496,3 +496,8 @@ button:hover {
 .deleted-comment {
   color: grey;
 }
+
+#infinite-scroll-el {
+  position: absolute;
+  bottom: 30rem;
+}
