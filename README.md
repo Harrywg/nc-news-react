@@ -1,3 +1,6 @@
+> [!NOTE]
+> This repo was a project for the [Northcoders Bootcamp](https://github.com/northcoders)
+
 # NC News Frontend
 ## Intro
 
